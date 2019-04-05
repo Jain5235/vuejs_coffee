@@ -1,0 +1,24 @@
+#app
+  label.hiddenControl Editing
+    input(v-model="editing", type="checkbox")
+    select(v-model="favoriteType")
+      option(v-for="coffee in coffees", :value="coffee.name") {{coffee.name}}
+  h3 Vue.js Coffee Editor
+  .coffeeType(v-for="(coffee,cid) in coffees", :class="{favorite: coffee.name == favoriteType, showMode: !editing}")
+    .num 0{{cid}}
+    .cupContainer
+      .cup(:class="[coffee.type]")
+        .ingradients
+          .coffee(:style="{height: coffee.coffee+'%'}")
+          .milk(:style="{height: coffee.milk+'%'}")
+          .water(:style="{height: coffee.water+'%'}")
+          .bubble(:style="{height: coffee.bubble+'%'}")
+    .control 
+      h2 {{coffee.name}}
+      select(v-model="coffee.type")
+        option(v-for="cupType in cupTypes",
+              :value="cupType") {{cupType}}
+      div(v-for="type in ['coffee','milk','bubble','water']")
+        label {{type}}
+        input(type="range" v-model="coffee[type]",min="0",max="100")
+          

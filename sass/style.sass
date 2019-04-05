@@ -1,0 +1,101 @@
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+  
+html,body
+  font-family: "微軟正黑體"
+  background-color: #282f38
+  color: #fff
+  display: flex
+  justify-content: center
+.coffeeType
+  display: flex
+  align-items: center
+  // border: 1px solid #fff
+  max-width: 400px
+  border-radius: 5px
+  padding: 10px 20px
+  cursor: pointer
+  border-bottom: 1px solid rgba(white,0.1)
+  transition: 0.5s
+  &:hover
+    background-color: rgba(white,0.05)
+  &.showMode
+    label,input,select
+      display: none
+  .num
+    font-size: 60px
+    flex: 1
+    font-weight: bold
+    margin-right: 30px
+  .cupContainer
+    flex: 1
+    margin-right: 50px
+  .control
+    flex: 2
+    
+  .cup
+    border: 4px solid #fff
+    +size(70px,50px)
+    border-top: none
+    border-radius: 0px 0px 50px 50px
+    margin: 10px
+    padding-top: 5px
+    position: relative
+    
+    &:before
+      content: ""
+      display: block
+      border: 4px solid #fff
+      +size(15px,20px)
+      border-left: none
+      position: absolute
+      left: 100%
+      top: 40%
+      transform: translate(0, -50%)
+      border-radius: 0px 50px 50px 0px
+    &.mock
+      +size(60px,90px)
+      border-radius: 0
+      .ingradients
+        border-radius: 0
+    &.small
+      +size(50px,40px)
+    &.big
+      +size(80px,50px)
+    
+    
+    .ingradients
+      +size(100%)
+      border-radius: 0px 0px 50px 50px
+      overflow: hidden
+      display: flex
+      flex-direction: column-reverse
+      
+      
+    .coffee,.milk,.water,.bubble
+      background-color: #fff
+      height: 10px
+    .coffee
+      background-color: #66491a
+    .milk
+      background-color: #f7d8bb
+    .water
+      background-color: #589bce
+    .bubble
+      background-color: #eee
+  &.favorite
+    &:before
+      content: "BEST"
+      color: #ff5e5e
+      border: 5px solid 
+      padding: 5px 3px
+      font-size: 30px
+      line-height: 0.9 
+      position: absolute
+      transform: translate(-70px, 0px) rotate(-20deg)
+    
+.hiddenControl
+  position: fixed
+  left: 10px
+  top: 10px
